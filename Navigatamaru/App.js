@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text } from "react-native";
 
-import  MealsNavigator from "./navigation/MealsNavigator";
+import MealsNavigator from "./navigation/MealsNavigator";
 export default function App() {
   // เพิ่มโค้ดส่วนนี้
   return <MealsNavigator />;

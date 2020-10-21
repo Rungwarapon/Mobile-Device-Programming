@@ -10,8 +10,10 @@ import {
 } from "react-native";
 import { CATEGORIES } from "../data/dummy-data";
 import CategoryGridTile from "../components/CategoryGridTile";
+import { HeaderButtons, Item } from "react-navigation-header-buttons";
+import CustomHeaderButton from "../components/CustomHeaderButton";
 
-const CategoriesScreen = (props) => {   
+const CategoriesScreen = (props) => {
   const renderGridItem = (itemData) => {
     return (
       <CategoryGridTile
@@ -19,7 +21,7 @@ const CategoriesScreen = (props) => {
         color={itemData.item.color}
         onSelect={() => {
           props.navigation.navigate("CategoryMeals", {
-            categoryId: itemData.item.id
+            categoryId: itemData.item.id,
           });
         }}
       />
@@ -32,7 +34,7 @@ const CategoriesScreen = (props) => {
   };
 
   return (
-    <FlatList data={CATEGORIES} renderItem={renderGridItem} numColumns={2}  />
+    <FlatList data={CATEGORIES} renderItem={renderGridItem} numColumns={2} />
 
     // ส่วนนี้ <View>...</View>ใช้เพื่อการทดลอง และให้คอมเมนต์เมื่อใช้ <FlatList>
     // <View>
@@ -42,9 +44,24 @@ const CategoriesScreen = (props) => {
 };
 
 // กำหนด navigationOptions เช่่น การปรับแต่งเฮดเดอร์ที่นี่ได้
-CategoriesScreen.navigationOptions = {
-  headerTitle: "Meal Categories",
- };
+CategoriesScreen.navigationOptions = (navigationData) => {
+  return {
+    headerTitle: "Meal Categories",
+    headerLeft: () => {
+      return (
+        <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+          <Item
+            title="Menu"
+            iconName="ios-menu"
+            onPress={() => {
+              navigationData.navigation.toggleDrawer();
+            }}
+          />
+        </HeaderButtons>
+      );
+    },
+  };
+};
 
 const styles = StyleSheet.create({
   screen: {

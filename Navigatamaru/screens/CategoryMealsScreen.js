@@ -9,43 +9,17 @@ import {
 } from "react-native";
 import { CATEGORIES, MEALS } from "../data/dummy-data";
 import MealItem from "../components/MealItem";
+import MealList from "../components/MealList";
 
 const CategoryMealsScreen = (props) => {
-  const renderMealItem = (itemData) => {
-    return (
-      <MealItem
-        title={itemData.item.title}
-        duration={itemData.item.duration}
-        complexity={itemData.item.complexity}
-        affordability={itemData.item.affordability}
-        image={itemData.item.imageUrl}
-        onSelectMeal={() => {
-          props.navigation.navigate("MealDetail", {
-            deeId: itemData.item.id
-          })
-        }}
-      />
-
-      // ส่วนนี้ <View>...</View>ใช้เพื่อการทดลอง และให้คอมเมนต์เมื่อเรียกใช้ <MealItem>
-      // <View style={{ height: 50, width: "40%" }}>
-      //   <Text>{itemData.item.title}</Text>
-      // </View>
-    );
-  };
-
   const catId = props.navigation.getParam("categoryId");
-
   const displayedMeals = MEALS.filter(
     (meal) => meal.categoryIds.indexOf(catId) >= 0
   );
 
   return (
     <View style={styles.screen}>
-      <FlatList
-        style={{ width: "100%" }}
-        data={displayedMeals}
-        renderItem={renderMealItem}
-      />
+      <MealList listdata={displayedMeals} navigation={props.navigation} />
     </View>
 
     // ส่วนนี้ <View>...</View>ใช้เพื่อการทดลอง และให้คอมเมนต์เมื่อใช้ <FlatList>
@@ -59,10 +33,10 @@ CategoryMealsScreen.navigationOptions = (navigationData) => {
   const catId = navigationData.navigation.getParam("categoryId");
 
   const selectedCategory = CATEGORIES.find((cat) => cat.id === catId);
-  console.log("selectedCategory: ", selectedCategory);
+  // console.log("selectedCategory: ", selectedCategory);
 
   return {
-    headerTitle: selectedCategory.title
+    headerTitle: selectedCategory.title,
   };
 };
 
