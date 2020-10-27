@@ -53,7 +53,7 @@ FiltersScreen.navigationOptions = (navigationData) => {
         <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
           <Item
             title="Save"
-            iconName="ios-save"
+            iconName="ios-star"
             onPress={() => {
               navigationData.navigation.toggleDrawer();
             }}

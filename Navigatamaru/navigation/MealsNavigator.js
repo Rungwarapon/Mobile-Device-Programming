@@ -3,7 +3,8 @@ import React from "react";
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 import { createBottomTabNavigator } from "react-navigation-tabs";
-import { AntDesign } from "@expo/vector-icons";
+// import { AntDesign } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 import FavoritesScreen from "../screens/FavoritesScreen";
 import FiltersScreen from "../screens/FiltersScreen";
 import CategoriesScreen from "../screens/CategoriesScreen";
@@ -48,7 +49,7 @@ const MealsFavTabNavigator = createBottomTabNavigator(
       navigationOptions: {
         tabBarIcon: (tabInfo) => {
           return (
-            <AntDesign name="wechat" size={24} color={tabInfo.tintColor} />
+            <Ionicons  name="ios-restaurant" size={24} color={tabInfo.tintColor} />
           );
         },
       },
@@ -58,7 +59,7 @@ const MealsFavTabNavigator = createBottomTabNavigator(
       navigationOptions: {
         tabBarIcon: (tabInfo) => {
           return (
-            <AntDesign name="wechat" size={24} color={tabInfo.tintColor} />
+            <Ionicons  name="ios-star" size={24} color={tabInfo.tintColor} />
           );
         },
       },

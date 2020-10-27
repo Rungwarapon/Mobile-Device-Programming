@@ -14,6 +14,7 @@ const MealList = (props) => {
         onSelectMeal={() => {
           props.navigation.navigate("MealDetail", {
             deeId: itemData.item.id,
+            mealTitle: itemData.item.title,
           });
         }}
       />
