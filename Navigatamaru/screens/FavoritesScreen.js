@@ -5,13 +5,15 @@ import MealList from "../components/MealList";
 import { useSelector } from "react-redux";
 
 const FavoritesScreen = (props) => {
-  const favoriteMeals = useSelector(state => state.meals.favoriteMeals);
-  const favMeals = favoriteMeals.filter((meal) => meal.id === "m1" || meal.id === "m2");
+  const favoriteMeals = useSelector((state) => state.meals.favoriteMeals);
+  // const favMeals = favoriteMeals.filter(
+  //   (meal) => meal.id === "m1" || meal.id === "m2"
+  // );
   return (
     // <View style={styles.screen}>
     //   <Text>The Favorites Screen!</Text>
     // </View>
-    <MealList listdata={favMeals} navigation={props.navigation} />
+    <MealList listdata={favoriteMeals} navigation={props.navigation} />
   );
 };
 
