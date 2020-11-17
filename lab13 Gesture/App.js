@@ -3,7 +3,7 @@ import { StyleSheet, View, Animated, PanResponder } from "react-native";
 export default function App() {
   const pan = useRef(new Animated.ValueXY()).current;
   const scale = useRef(new Animated.Value(1)).current;
-  const panResponder = PanResponder.create({
+  const responder = PanResponder.create({
     onStartShouldSetPanResponder: () => true,
     onPanResponderGrant: () => {
       pan.setOffset({ x: pan.x._value, y: pan.y._value });
@@ -43,7 +43,7 @@ export default function App() {
   return (
     <View style={styles.screen}>
       <Animated.Image
-        {...panResponder.panHandlers}
+        {...responder.panHandlers}
         source={require("./assets/logo.png")}
         style={{
           ...styles.logo,
